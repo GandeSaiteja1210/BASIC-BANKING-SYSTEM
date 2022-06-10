@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer</title>
+  <link rel="stylesheet" href="spark.css">
+  
+  <!-- bootstrap link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div>
+    <nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/SPARK.HTML" style="padding: right 60px; margin-right: 40px;"><img src="/spark.png"
+              alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/SPARK.HTML"
+                  style="color: white;font-size: large ;padding-right: 40px;">Home</a>
+              </li>
+              
+              <li class="nav-item">
+                <li class="nav-item">
+                    <a class="nav-link " href="/about_me.html" style="color: white; font-size: large ;">About Me</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="https://www.thesparksfoundationsingapore.org/
+                    " style="color: white; font-size: large ;margin-left: 50px;">   Contact us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="/Lastpage.html" style="color: white; font-size: large ; margin-left:1650%;">EXIT</a>
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </nav>
+  </div>
+  <style>
+    th,
+    td {
+      text-align: center;
+    }
+  </style>
+  
+<center style="background-color: rgb(242, 242, 247);">
+    <!-- table  -->
+    <div class="my-info text-center">
+        <h2 style="color: rgb(9, 9, 9);">Account Holder Name:GANDE SAITEJA</h2>
+        <h4 style="color: rgb(9, 9, 9);">Net Bank Balance: $<span id="myAccountBalance">100000</span></h4>
+
+        <button class="btn btn-info" data-toggle="modal" data-target="#sendMoney">Send Money</button>
+        <a class="btn btn-info" href="" data-toggle="modal" data-target="#transactionHistory">See All Transactions</a>
+    </div><br>
+
+    <!-- Modal send money -->
+    <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <input type="text" id="enterName" class="form-control" placeholder="Recipient's username"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">@email.com</span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" id="enterAmount" class="form-control" placeholder=" Enter Amount"
+                                aria-label="Amount (to the nearest dollar)">
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="sendMoney()" class="btn btn-success" data-dismiss="modal">Send
+                        Money</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal transaction History-->
+    <div class="modal fade" id="transactionHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Transaction History</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ol id="transaction-history-body">
+
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table  -->
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr class="table-danger-light">
+                        <th scope="col" style="color:rgb(9, 9, 9) ;">Sl. No.</th>
+                        <th scope="col" style="color:rgb(9, 9, 9) ;">Name</th>
+                        <th scope="col" style="color:rgb(9, 9, 9) ;">E-mail</th>
+                        <th scope="col" style="color:rgb(9, 9, 9) ;">ACC NO</th>
+                        <th scope="col" style="color:rgb(9, 9, 9) ;">Bank Balance(in $)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-light">
+                        <td scope="row">1</td>
+                        <td>HARANATH</td>
+                        <td>HARANATH@email.com</td>
+                        <td>2001</td>
+                        <td>
+                            <p id="HARANATHBankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td scope="row">2</td>
+                        <td>SAITEJA</td>
+                        <td>SAITEJA@email.com</td>
+                        <td>2002</td>
+                        <td>
+                            <p id="SAITEJABankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td scope="row">3</td>
+                        <td>VEGESH</td>
+                        <td>VEGESH@email.com</td>
+                        <td>2003</td>
+                        <td>
+                            <p id="VEGESHBankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td scope="row">4</td>
+                        <td>ANIRUDH</td>
+                        <td>ANIRUDH@email.com</td>
+                        <td>2004</td>
+                        <td>
+                            <p id="ANIRUDHBankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td scope="row">5</td>
+                        <td>SAM</td>
+                        <td>SAM@email.com</td>
+                        <td>2005</td>
+                        <td>
+                            <p id="SAMBankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td scope="row">6</td>
+                        <td>VARUN</td>
+                        <td>VARUN@email.com</td>
+                        <td>2006</td>
+
+                        <td>
+                            <p id="VARUNBankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td>7</td>
+                        <td>ADNAN</td>
+                        <td>ADNAN@email.com</td>
+                        <td>2007</td>
+
+                        <td>
+                            <p id="ADNANBankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td scope="row">8</td>
+                        <td>CHAITANYA</td>
+                        <td>CHAITANYAh@email.com</td>
+                        <td>2008</td>
+
+                        <td>
+                            <p id="CHAITANYABankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td scope="row">9</td>
+                        <td>RAVI</td>
+                        <td>RAVI@email.com</td>
+                        <td>2009</td>
+
+                        <td>
+                            <p id="RAVIBankBalance">10000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td scope="row">10</td>
+                        <td>PRADHAM</td>
+                        <td>PRADHAM@email.com</td>
+                        <td>2010</td>
+
+                        <td>
+                            <p id="PRADHAMBankBalance">10000</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/spark.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+</body>
+
+
+  </center>
+  </body>
+  </head>
